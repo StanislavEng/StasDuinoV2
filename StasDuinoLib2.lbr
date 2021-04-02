@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
@@ -256,6 +256,7 @@
 <pad name="P$2" x="0" y="-0.74" drill="3.56" shape="octagon" first="yes"/>
 <pad name="P$3" x="4.4" y="-3.99" drill="3.05" shape="octagon" first="yes"/>
 <text x="-3.25" y="7.2" size="1.27" layer="25">&gt;NAME</text>
+<circle x="-4.25" y="-7.65" radius="0.206153125" width="0" layer="21"/>
 </package>
 <package name="RESET_FUSE">
 <smd name="P$1" x="-2.45" y="0" dx="1.5" dy="4.6" layer="1"/>
@@ -364,6 +365,7 @@
 <smd name="P$2" x="0" y="-0.75" dx="1.5" dy="0.75" layer="1"/>
 <text x="2.5" y="1.35" size="1.27" layer="25" rot="R90">&gt;NAME
 </text>
+<text x="-1.27" y="1.27" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
 <package name="DIODE_1A">
 <smd name="P$1" x="-2" y="0" dx="2.5" dy="1.7" layer="1"/>
@@ -3221,6 +3223,16 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <pin name="4" x="5.08" y="-2.54" visible="pad" length="short" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="2" x="-5.08" y="-2.54" visible="pad" length="short" direction="pas" swaplevel="2"/>
 </symbol>
+<symbol name="CAP">
+<wire x1="0" y1="2.54" x2="0" y2="2.032" width="0.1524" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="0.508" width="0.1524" layer="94"/>
+<text x="1.524" y="2.921" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<text x="1.524" y="-2.159" size="1.778" layer="96" font="vector">&gt;VALUE</text>
+<rectangle x1="-2.032" y1="0.508" x2="2.032" y2="1.016" layer="94"/>
+<rectangle x1="-2.032" y1="1.524" x2="2.032" y2="2.032" layer="94"/>
+<pin name="1" x="0" y="5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="2" x="0" y="-2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="ATMEGA328P_TQFP" uservalue="yes">
@@ -3230,23 +3242,23 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <devices>
 <device name="" package="ATMEGA328P_TQFP">
 <connects>
-<connect gate="G$1" pin="ADC0" pad="P$24"/>
-<connect gate="G$1" pin="ADC1" pad="P$25"/>
-<connect gate="G$1" pin="ADC2" pad="P$26"/>
-<connect gate="G$1" pin="ADC3" pad="P$27"/>
-<connect gate="G$1" pin="ADC4" pad="P$28"/>
-<connect gate="G$1" pin="ADC5" pad="P$19"/>
-<connect gate="G$1" pin="ADC6" pad="P$22"/>
-<connect gate="G$1" pin="ADC7" pad="P$23"/>
+<connect gate="G$1" pin="ADC0" pad="P$23"/>
+<connect gate="G$1" pin="ADC1" pad="P$24"/>
+<connect gate="G$1" pin="ADC2" pad="P$25"/>
+<connect gate="G$1" pin="ADC3" pad="P$26"/>
+<connect gate="G$1" pin="ADC4" pad="P$27"/>
+<connect gate="G$1" pin="ADC5" pad="P$28"/>
+<connect gate="G$1" pin="ADC6" pad="P$19"/>
+<connect gate="G$1" pin="ADC7" pad="P$22"/>
 <connect gate="G$1" pin="AGND" pad="P$21"/>
 <connect gate="G$1" pin="AREF" pad="P$20"/>
 <connect gate="G$1" pin="AVCC" pad="P$18"/>
-<connect gate="G$1" pin="DIGITAL2" pad="P$1"/>
-<connect gate="G$1" pin="DIGITAL3" pad="P$2"/>
-<connect gate="G$1" pin="DIGITAL4" pad="P$9"/>
-<connect gate="G$1" pin="DIGITAL5" pad="P$10"/>
-<connect gate="G$1" pin="DIGITAL6" pad="P$11"/>
-<connect gate="G$1" pin="DIGITAL7" pad="P$32"/>
+<connect gate="G$1" pin="DIGITAL2" pad="P$32"/>
+<connect gate="G$1" pin="DIGITAL3" pad="P$1"/>
+<connect gate="G$1" pin="DIGITAL4" pad="P$2"/>
+<connect gate="G$1" pin="DIGITAL5" pad="P$9"/>
+<connect gate="G$1" pin="DIGITAL6" pad="P$10"/>
+<connect gate="G$1" pin="DIGITAL7" pad="P$11"/>
 <connect gate="G$1" pin="GND1" pad="P$3"/>
 <connect gate="G$1" pin="GND2" pad="P$5"/>
 <connect gate="G$1" pin="ICP" pad="P$12"/>
@@ -3494,7 +3506,7 @@ Source: www.epcos.com .. 01430148.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="LED_0805">
+<deviceset name="LED_0805" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="LED_0805" x="0" y="0"/>
 </gates>
@@ -4950,6 +4962,27 @@ SMT- SWCH-08247</description>
 <technology name="">
 <attribute name="PROD_ID" value="SWCH-08247"/>
 <attribute name="VALUE" value="TAC_SWITCHSMD"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="9.0PF" prefix="C">
+<description>&lt;h3&gt;9.0pF ceramic capacitors&lt;/h3&gt;
+&lt;p&gt;A capacitor is a passive two-terminal electrical component used to store electrical energy temporarily in an electric field.&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="CAP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-0603-50V-10%" package="0603">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="CAP-09341"/>
+<attribute name="VALUE" value="9.0pF"/>
 </technology>
 </technologies>
 </device>
